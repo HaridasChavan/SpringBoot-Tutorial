@@ -1,11 +1,20 @@
 package com.chavanharidas.Springboottutorial.entity;
 
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.NotBlank;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-@jakarta.persistence.Entity
+@Entity
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
 public class Department {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -86,6 +95,46 @@ public class Department {
 	public Department() {
 		super();
 	}
-	
 
+	public static class Builder {
+		private String departmentName;
+		private String departmentAddress;
+		private String departmentCode;
+		private Long departmentId;
+
+		public Builder departmentName(String departmentName) {
+			this.departmentName = departmentName;
+			return this;
+		}
+
+		public Builder departmentAddress(String departmentAddress) {
+			this.departmentAddress = departmentAddress;
+			return this;
+		}
+
+		public Builder departmentCode(String departmentCode) {
+			this.departmentCode = departmentCode;
+			return this;
+		}
+
+		public Builder departmentId(Long departmentId) {
+			this.departmentId = departmentId;
+			return this;
+		}
+
+		public Department build() {
+			Department department = new Department();
+			department.departmentName = this.departmentName;
+			department.departmentAddress = this.departmentAddress;
+			department.departmentCode = this.departmentCode;
+			department.departmentId = this.departmentId;
+			return department;
+
+		}
+
+	}
+
+	public static Builder builder() {
+		return new Builder();
+	}
 }

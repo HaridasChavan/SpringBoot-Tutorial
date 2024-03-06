@@ -2,6 +2,8 @@ package com.chavanharidas.Springboottutorial.entity;
 
 import org.springframework.http.HttpStatus;
 
+import lombok.Builder;
+@Builder
 public class ErrorMessage {
 	private HttpStatus status;
 	private String message;

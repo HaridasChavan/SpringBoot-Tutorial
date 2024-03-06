@@ -14,15 +14,14 @@ import org.springframework.stereotype.Service;
 import com.chavanharidas.Springboottutorial.entity.Department;
 import com.chavanharidas.Springboottutorial.error.DepartmentNotFoundException;
 import com.chavanharidas.Springboottutorial.repository.DepartmentRepository;
-import com.google.gson.JsonObject;
 
 @Service
 
 public class DepartmentServiceImpl implements DepartmentService {
 	@Autowired
 	DepartmentRepository departmentRepository;
-	
-	private final Logger logger=LoggerFactory.getLogger(getClass());
+
+	private final Logger logger = LoggerFactory.getLogger(getClass());
 
 	@Override
 	public Department saveDepartment(Department department) {
@@ -37,17 +36,16 @@ public class DepartmentServiceImpl implements DepartmentService {
 	@Override
 	public Department fetchDepartmentById(Long departmentId) throws DepartmentNotFoundException {
 		Optional<Department> department = departmentRepository.findById(departmentId);
-		if (!department.isPresent()) {
+		if (department.isEmpty()) {
 			throw new DepartmentNotFoundException("Department Not Avialable");
 		}
 		return department.get();
 	}
 
 	@Override
-    public void deleteDepartmentById(Long departmentId) {
-        departmentRepository.deleteById(departmentId);
-    }
-	
+	public void deleteDepartmentById(Long departmentId) {
+		departmentRepository.deleteById(departmentId);
+	}
 
 	@Override
 	public Department updateDepartment(Long departmentId, Department department) {
@@ -66,7 +64,9 @@ public class DepartmentServiceImpl implements DepartmentService {
 	}
 
 	@Override
-	public List<Department> fetchDepartmentByName(String departmentName) {
+	public Department fetchDepartmentByName(String departmentName) {
 		return departmentRepository.findByDepartmentNameIgnoreCase(departmentName);
 	}
+
+	
 }

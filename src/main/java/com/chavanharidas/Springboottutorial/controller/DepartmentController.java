@@ -23,8 +23,8 @@ import jakarta.validation.Valid;
 public class DepartmentController {
 	@Autowired
 	private DepartmentService departmentService;
-	
-private final Logger LOGGER=LoggerFactory.getLogger(DepartmentController.class);
+
+	private final Logger LOGGER = LoggerFactory.getLogger(DepartmentController.class);
 
 	@PostMapping("/departments")
 	public Department saveDepartment(@Valid @RequestBody Department department) {
@@ -46,10 +46,10 @@ private final Logger LOGGER=LoggerFactory.getLogger(DepartmentController.class);
 	}
 
 	@DeleteMapping("/departments/{id}")
-    public String deleteDepartmentById(@PathVariable("id") Long departmentId) {
-        departmentService.deleteDepartmentById(departmentId);
-        return "Department deleted Successfully!!";
-    }
+	public String deleteDepartmentById(@PathVariable("id") Long departmentId) {
+		departmentService.deleteDepartmentById(departmentId);
+		return "Department deleted Successfully!!";
+	}
 
 	@PutMapping("/departments/{id}")
 	public Department updateDepartment(@PathVariable("id") Long departmentId, @RequestBody Department department) {
@@ -58,7 +58,7 @@ private final Logger LOGGER=LoggerFactory.getLogger(DepartmentController.class);
 	}
 
 	@GetMapping("/departments/name/{name}")
-    public List<Department> fetchDepartmentByName(@PathVariable("name") String departmentName) {
-        return departmentService.fetchDepartmentByName(departmentName);
-    }
+	public Department fetchDepartmentByName(@PathVariable("name") String departmentName) {
+		return departmentService.fetchDepartmentByName(departmentName);
+	}
 }

@@ -1,13 +1,14 @@
-package com.chavanharidas.Springboottutotial;
+package com.chavanharidas.Springboottutorial;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class SpringBootTutotialApplicationTests {
-
+class SpringBootTutorialApplicationTests {
 	@Test
 	void contextLoads() {
 	}
+
+	
 
 }
